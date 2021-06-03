@@ -17,7 +17,7 @@ int main ()
 // Loop, getting and printing characters
 
   for (;;)
-  {
+  {delay(2000);
     printf ("%3d", serialGetchar(fd)) ;
     fflush (stdout) ;
   }
