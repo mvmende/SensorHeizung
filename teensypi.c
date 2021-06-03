@@ -18,7 +18,7 @@ int main ()
 
   for (;;)
   {
-    printf (serialGetchar(fd)) ;
+    printf ("%3d", serialGetchar(fd)) ;
     fflush (stdout) ;
   }
 }
