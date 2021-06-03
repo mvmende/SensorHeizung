@@ -8,7 +8,7 @@ int main ()
 {
   int fd ;
 
-  if ((fd = serialOpen ("/dev/ttyAMA0", 115200)) < 0)
+  if ((fd = serialOpen ("/dev/ttyUSB0", 9600)) < 0)
   {
     fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
     return 1 ;
