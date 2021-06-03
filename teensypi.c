@@ -15,10 +15,10 @@ int main ()
   }
 
 // Loop, getting and printing characters
-  int data = serialGetchar(fd);
+
   for (;;)
   {
-    printf (data) ;
+    printf (serialGetchar(fd)) ;
     fflush (stdout) ;
   }
 }
