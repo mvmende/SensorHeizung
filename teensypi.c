@@ -15,7 +15,7 @@ int main ()
   }
 
 // Loop, getting and printing characters
-int i
+
   for (;;)
   {
     putchar (serialGetchar (fd)) ;
