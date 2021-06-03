@@ -18,7 +18,7 @@ int main ()
 
   while (serialDataAvail (fd))
     {delay(2000);
-      print ("%3d", serialGetchar (fd)) ;
+      println ("%3d", serialGetchar (fd)) ;
       fflush (stdout) ;
     }
   
