@@ -17,8 +17,8 @@ int main ()
 // Loop, getting and printing characters
 
   while (serialDataAvail (fd))
-    {
-      printf (" -> %3d", serialGetchar (fd)) ;
+    {delay(2000)
+      printf ("%3d", serialGetchar (fd)) ;
       fflush (stdout) ;
     }
   
