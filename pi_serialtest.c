@@ -23,7 +23,7 @@ int main ()
     //}
   
   for (;;)
-  {delay(2000);
+  {
     putchar (serialGetchar (fd)) ;
     fflush (stdout) ;
   }
