@@ -7,7 +7,7 @@
 
 int main ()
 { float temp;
-  char input[];
+  char input[5];
   int fd ;
 
   if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
