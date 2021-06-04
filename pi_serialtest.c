@@ -26,7 +26,7 @@ int main ()
     //}
   
   for (;;)
-  { if (serialGetchar(fd) == 10){
+  { if (serialGetchar(fd) == 13){
       for (int i = 0; i<2; i++){
         input[i] = serialGetchar(fd);
       }
