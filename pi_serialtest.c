@@ -6,11 +6,11 @@
 #include <wiringSerial.h>
 
 int main ()
-{ float temp;
+{ float t;
   char input[5];
   int fd ;
-  int i;
-
+  
+ 
   if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
   {
     fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
@@ -26,12 +26,13 @@ int main ()
     //}
   
   for (;;)
-  {
-    for(i=0, i<5, i++) {
-    input[i] = serialGetchar (fd);
+  { if (serialGetchar(fd) == 10){
+      for (int i = 0; i<6; i++){
+        input[i] = serialGetchar(fd);
+      }
+      t = input[0]*10+input[1]+input[3]*0.1+input[4]*0.01;
+      printf("Temperatur: %3d", t);
     }
-    temp = atof(input);
-    printf("%f\n",temp);
     //putchar (serialGetchar (fd)) ;
     fflush (stdout) ;
   }
