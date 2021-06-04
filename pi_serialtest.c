@@ -9,6 +9,7 @@ int main ()
 { float temp;
   char input[5];
   int fd ;
+  int i;
 
   if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
   {
@@ -26,7 +27,9 @@ int main ()
   
   for (;;)
   {
-    input = serialGetchar (fd);
+    for(i=0, i<5, i++){
+    input[i] = serialGetchar (fd);
+    }
     temp = atof(input);
     printf("%f\n",temp);
     //putchar (serialGetchar (fd)) ;
