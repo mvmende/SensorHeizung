@@ -16,15 +16,15 @@ int main ()
 
 // Loop, getting and printing characters
 
-  while (serialDataAvail (fd))
-    {delay(2000);
-      printf ("%3d", serialGetchar (fd)) ;
-      fflush (stdout) ;
-    }
+//  while (serialDataAvail (fd))
+  //  {delay(2000);
+    //  printf ("%3d", serialGetchar (fd)) ;
+      //fflush (stdout) ;
+    //}
   
- // for (;;)
-  //{delay(2000);
-   // printf ("%3d", serialGetchar(fd)) ;
-    //fflush (stdout) ;
-  //}
+  for (;;)
+  {delay(2000);
+    putchar (serialGetchar (fd)) ;
+    fflush (stdout) ;
+  }
 }
