@@ -5,7 +5,8 @@
 #include <wiringSerial.h>
 
 int main ()
-{
+{ float temp;
+  char input[];
   int fd ;
 
   if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
@@ -24,7 +25,10 @@ int main ()
   
   for (;;)
   {
-    putchar (serialGetchar (fd)) ;
+    input = serialGetchar (fd);
+    temp = atof(input);
+    printf("%f\n",temp);
+    //putchar (serialGetchar (fd)) ;
     fflush (stdout) ;
   }
 }
