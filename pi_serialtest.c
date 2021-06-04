@@ -27,7 +27,7 @@ int main ()
   
   for (;;)
   {
-    for(i=0, i<5, i++){
+    for(i=0, i<5, i++) {
     input[i] = serialGetchar (fd);
     }
     temp = atof(input);
