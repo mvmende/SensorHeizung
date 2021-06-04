@@ -19,7 +19,5 @@ void loop() {
   temp = t1;
   byte sendtemp = temp;
   
-  if (Serial.available()){
-  Serial.write(sendtemp);
-  }
+  Serial.println (sendtemp);
 }
