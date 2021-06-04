@@ -30,7 +30,7 @@ int main ()
       for (int i = 0; i<2; i++){
         input[i] = serialGetchar(fd);
       }
-      //t = input[0]*10+input[1];                //+input[3]*0.1+input[4]*0.01;
+      t = input[0]*10+input[1];                //+input[3]*0.1+input[4]*0.01;
       printf(input);
     }
     //putchar (serialGetchar (fd)) ;
