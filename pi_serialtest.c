@@ -36,7 +36,6 @@ int main ()
       t = atof (input);
       printf("Temperatur:%.2f \n", t);
       fflush (stdout) ;
-      continue;
     }
      else{
        if (serialGetchar(fd) == 104){
@@ -46,7 +45,6 @@ int main ()
         h = atof (input);
         printf("Luftfeuchtigkeit:%.2f \n", h);
         fflush (stdout) ;
-        continue;
        }
      }
 
