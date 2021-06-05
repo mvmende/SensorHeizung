@@ -43,10 +43,9 @@ int main ()
         for (int j = 0; j<6; j++){
           inputh[j] = serialGetchar(fd);
         }
-      h = atof (input);
-      printf("Luftfeuchtigkeit:%.2f \n", h);
-      fflush (stdout) ;
-      continue;
+        h = atof (input);
+        printf("Luftfeuchtigkeit:%.2f \n", h);
+        fflush (stdout) ;
       }
     }
   }
