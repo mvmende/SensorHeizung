@@ -8,6 +8,7 @@
 
 int main ()
 { float t;
+  float h;
   char input[10];
   int fd ;
   
@@ -27,14 +28,22 @@ int main ()
     //}
   
  for (;;)
-  { if (serialGetchar(fd) == 10){
+  { if (serialGetchar(fd) == 116){
       for (int i = 0; i<6; i++){
         input[i] = serialGetchar(fd);
       }
       t = atof (input);
       printf("Temperatur:%.2f \n", t);
+      fflush (stdout) ;
     }
-    fflush (stdout) ;
+    if (serialGetchar(fd) == 104){
+      for (int i = 0; i<6; i++){
+        input[i] = serialGetchar(fd);
+      }
+      h = atof (input);
+      printf("Luftfeuchtigkeit:%.2f \n", h);
+      fflush (stdout) ;
+    }
   }
  
   //for (;;)
