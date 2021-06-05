@@ -37,6 +37,7 @@ int main ()
       printf("Temperatur:%.2f \n", t);
       fflush (stdout) ;
     }
+   delay(2000);
      else{
        if (serialGetchar(fd) == 104){
         for (int j = 0; j<4; j++){
