@@ -38,6 +38,7 @@ int main ()
  
   for (;;)
   { if (serialGetchar(fd) == 10){
+      int i=0;
       while(serialGetchar(fd)!=13){
         input[i] = serialGetchar(fd);
         i++;
