@@ -11,7 +11,6 @@ int main ()
   float t;
   float h;
   char input[10];
-  char inputh[10];
   int fd ;
   
  
@@ -41,7 +40,7 @@ int main ()
     else{
       if (serialGetchar(fd) == 104){
         for (int j = 0; j<6; j++){
-          inputh[j] = serialGetchar(fd);
+          input[j] = serialGetchar(fd);
         }
         h = atof (input);
         printf("Luftfeuchtigkeit:%.2f \n", h);
