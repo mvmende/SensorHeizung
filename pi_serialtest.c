@@ -7,9 +7,11 @@
 #include <wiringSerial.h>
 
 int main ()
-{ float t;
+{ 
+  float t;
   float h;
   char input[10];
+  char inputh[10];
   int fd ;
   
  
@@ -38,15 +40,13 @@ int main ()
     }
     else{
       if (serialGetchar(fd) == 104){
-        for (int i = 0; i<6; i++){
-          input[i] = serialGetchar(fd);
+        for (int j = 0; j<6; j++){
+          inputh[i] = serialGetchar(fd);
         }
       h = atof (input);
       printf("Luftfeuchtigkeit:%.2f \n", h);
       fflush (stdout) ;
-      }
-      else{
-        continue;
+      continue;
       }
     }
   }
