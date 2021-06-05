@@ -39,8 +39,8 @@ int main ()
       }
       t = atof (input);
       h = atof (inputh);
-      printf("Temperatur:%.2f \n", t);
-      printf("Luftfeuchtigkeit:%.2f \n", h);
+      printf("Temperatur:%.2f Grad Celsius \n", t);
+      printf("Luftfeuchtigkeit:%.2f %% \n", h);
       
       fflush (stdout) ;
     }
