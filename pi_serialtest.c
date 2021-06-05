@@ -41,7 +41,7 @@ int main ()
     else{
       if (serialGetchar(fd) == 104){
         for (int j = 0; j<6; j++){
-          inputh[i] = serialGetchar(fd);
+          inputh[j] = serialGetchar(fd);
         }
       h = atof (input);
       printf("Luftfeuchtigkeit:%.2f \n", h);
