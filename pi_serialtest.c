@@ -27,12 +27,12 @@ int main ()
     //}
   
   for (;;)
-  { if (serialGetchar(fd) == 13){
+  { if (serialGetchar(fd) == 10){
       for (int i = 0; i<2; i++){
         input[i] = serialGetchar(fd);
       }
       t = atoi (input);
-      printf("%d \n",t);
+      printf("%2d \n", t);
     }
     //putchar (serialGetchar (fd)) ;
     fflush (stdout) ;
