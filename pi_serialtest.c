@@ -35,7 +35,7 @@ int main ()
       t = atof (input);
       printf("Temperatur:%.2f \n", t);
       fflush (stdout) ;
-    }
+ //   }
     if (serialGetchar(fd) == 104){
       for (int i = 0; i<6; i++){
         input[i] = serialGetchar(fd);
@@ -43,6 +43,7 @@ int main ()
       h = atof (input);
       printf("Luftfeuchtigkeit:%.2f \n", h);
       fflush (stdout) ;
+      }
     }
   }
  
