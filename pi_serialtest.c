@@ -46,7 +46,7 @@ int main ()
         printf("Luftfeuchtigkeit:%.2f \n", h);
         fflush (stdout) ;
       }
-    }
+    //}
   }
  
   //for (;;)
