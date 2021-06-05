@@ -30,7 +30,7 @@ int main ()
   
  for (;;)
   { if (serialGetchar(fd) == 116){
-      for (int i = 0; i<5; i++){
+      for (int i = 0; i<4; i++){
         input[i] = serialGetchar(fd);
       }
       t = atof (input);
@@ -38,7 +38,7 @@ int main ()
       fflush (stdout) ;
     //}
       if (serialGetchar(fd) == 104){
-        for (int j = 0; j<5; j++){
+        for (int j = 0; j<4; j++){
           input[j] = serialGetchar(fd);
         }
         h = atof (input);
