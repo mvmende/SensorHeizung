@@ -37,7 +37,6 @@ int main ()
       printf("Temperatur:%.2f \n", t);
       fflush (stdout) ;
     }
-    else{
       if (serialGetchar(fd) == 104){
         for (int j = 0; j<6; j++){
           input[j] = serialGetchar(fd);
@@ -46,7 +45,7 @@ int main ()
         printf("Luftfeuchtigkeit:%.2f \n", h);
         fflush (stdout) ;
       }
-    }
+    
   }
  
   //for (;;)
