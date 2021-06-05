@@ -32,7 +32,7 @@ int main ()
         input[i] = serialGetchar(fd);
       }
       t = atoi (input);
-      printf("%d",t);
+      printf("%d \n",t);
     }
     //putchar (serialGetchar (fd)) ;
     fflush (stdout) ;
