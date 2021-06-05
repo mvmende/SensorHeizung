@@ -29,7 +29,7 @@ int main ()
     //}
   
 // for (;;)
-  while (serialDataAvail (fd))
+  while (serialDataAvail (fd)>0)
   { if (serialGetchar(fd) == 116){
       for (int i = 0; i<4; i++){
         input[i] = serialGetchar(fd);
