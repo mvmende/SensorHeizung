@@ -11,6 +11,7 @@ int main ()
   float t;
   float h;
   char input[10];
+  char inputh[10];
   int fd ;
   
  
@@ -33,20 +34,26 @@ int main ()
       for (int i = 0; i<4; i++){
         input[i] = serialGetchar(fd);
       }
+      for (int j = 0; j<4; j++){
+        inputh[j] = serialGetchar(fd);
+      }
       t = atof (input);
+      h = atof (inputh);
       printf("Temperatur:%.2f \n", t);
-     // fflush (stdout) ;
+      printf("Luftfeuchtigkeit:%.2f \n", h);
+      
+      fflush (stdout) ;
     }
-     else{
-       if (serialGetchar(fd) == 'h'){
-        for (int j = 0; j<4; j++){
-          input[j] = serialGetchar(fd);
-        }
-        h = atof (input);
-        printf("Luftfeuchtigkeit:%.2f \n", h);
-        fflush (stdout) ;
-       }
-     }
+   //  else{
+   //    if (serialGetchar(fd) == 'h'){
+   //     for (int j = 0; j<4; j++){
+    //      input[j] = serialGetchar(fd);
+  //      }
+   //     h = atof (input);
+   //     printf("Luftfeuchtigkeit:%.2f \n", h);
+   //     fflush (stdout) ;
+       //}
+    // }
 
   }
  
