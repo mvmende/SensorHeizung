@@ -7,7 +7,7 @@
 #include <wiringSerial.h>
 
 int main ()
-{ int t;
+{ float t;
   char input[10];
   int fd ;
   
@@ -28,11 +28,11 @@ int main ()
   
   for (;;)
   { if (serialGetchar(fd) == 10){
-      for (int i = 0; i<2; i++){
+      for (int i = 0; i<5; i++){
         input[i] = serialGetchar(fd);
       }
-      t = atoi (input);
-      printf("%d \n", t);
+      t = atof (input);
+      printf("%f \n", t);
     }
     //putchar (serialGetchar (fd)) ;
     fflush (stdout) ;
