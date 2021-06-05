@@ -26,13 +26,24 @@ int main ()
       //fflush (stdout) ;
     //}
   
+ //for (;;)
+ // { if (serialGetchar(fd) == 10){
+  //    for (int i = 0; i<5; i++){
+   //     input[i] = serialGetchar(fd);
+  //    }
+   //   t = atof (input);
+  //   printf("Temperatur:%.2f \n", t);
+  //  }
+ 
+ 
   for (;;)
   { if (serialGetchar(fd) == 10){
-      for (int i = 0; i<5; i++){
+      while(serialGetchar(fd)!=13){
         input[i] = serialGetchar(fd);
+        i++;
       }
       t = atof (input);
-      printf("%.2f \n", t);
+      printf("Temperatur:%.2f \n", t);
     }
     //putchar (serialGetchar (fd)) ;
     fflush (stdout) ;
