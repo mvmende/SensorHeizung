@@ -4,6 +4,9 @@
 #define DHTTYPE DHT22
 DHT dht1(DHTPIN1, DHTTYPE); 
 
+float hum;
+float temp;
+
 void setup() {
   Serial.begin(9600);  
   dht1.begin();   
@@ -17,7 +20,10 @@ void loop() {
   
   hum = f1;            
   temp = t1;
-  byte sendtemp = temp;
+  //byte sendtemp = temp;
   
-  Serial.println (sendtemp);
+  Serial.print("t");
+  Serial.println (temp);
+  Serial.print("h");
+  Serial.println(hum);
 }
