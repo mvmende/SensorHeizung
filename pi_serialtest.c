@@ -28,8 +28,7 @@ int main ()
       //fflush (stdout) ;
     //}
   
-// for (;;)
-  while (serialDataAvail (fd)>0)
+  for (;;)
   { if (serialGetchar(fd) == 116){
       for (int i = 0; i<4; i++){
         input[i] = serialGetchar(fd);
@@ -38,15 +37,16 @@ int main ()
       printf("Temperatur:%.2f \n", t);
       fflush (stdout) ;
     }
-      if (serialGetchar(fd) == 104){
+     else{
+       if (serialGetchar(fd) == 104){
         for (int j = 0; j<4; j++){
           input[j] = serialGetchar(fd);
         }
         h = atof (input);
         printf("Luftfeuchtigkeit:%.2f \n", h);
         fflush (stdout) ;
-      }
-    //}
+       }
+     }
   }
  
   //for (;;)
