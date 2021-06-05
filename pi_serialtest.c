@@ -44,6 +44,7 @@ int main ()
       h = atof (input);
       printf("Luftfeuchtigkeit:%.2f \n", h);
       fflush (stdout) ;
+      break;
       }
     }
   }
