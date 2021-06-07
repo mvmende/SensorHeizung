@@ -10,8 +10,12 @@ int main ()
 { 
   float t;
   float h;
-  char input[10];
-  char inputh[10];
+  float heiz;
+  float luft;
+  char in_t[10];
+  char in_h[10];
+  char in_heiz[10];
+  char in_luft[10];
   int fd ;
   
  
@@ -32,15 +36,25 @@ int main ()
   for (;;)
   { if (serialGetchar(fd) == 't'){
       for (int i = 0; i<4; i++){
-        input[i] = serialGetchar(fd);
+        in_t[i] = serialGetchar(fd);
       }
-      for (int j = 0; j<4; j++){
-        inputh[j] = serialGetchar(fd);
+      for (int i = 0; i<4; i++){
+        in_h[i] = serialGetchar(fd);
       }
-      t = atof (input);
-      h = atof (inputh);
+      for (int i = 0; i<4; i++){
+        in_heiz[i] = serialGetchar(fd);
+      }
+      for (int i = 0; i<4; i++){
+        in_luft[i] = serialGetchar(fd);
+      }
+      t = atof (in_t);
+      h = atof (in_h);
+      heiz = atof (in_heiz);
+      luft = atof (in_luft);
       printf("Temperatur:%.2f Grad Celsius \n", t);
       printf("Luftfeuchtigkeit:%.2f %% \n", h);
+      printf("Heizleistung: %.2f %% \n", heiz);
+      printf("Lüfterleistung: %.2f %% \n", luft);
       
       fflush (stdout) ;
     }
