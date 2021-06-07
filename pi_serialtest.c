@@ -12,8 +12,8 @@ int main ()
   float h;
   float heiz;
   float luft;
-  char in_t[10];
-  char in_h[10];
+  char in_temp[10];
+  char in_hum[10];
   char in_heiz[10];
   char in_luft[10];
   int fd ;
@@ -36,10 +36,10 @@ int main ()
   for (;;)
   { if (serialGetchar(fd) == 't'){
       for (int i = 0; i<4; i++){
-        in_t[i] = serialGetchar(fd);
+        in_temp[i] = serialGetchar(fd);
       }
       for (int i = 0; i<4; i++){
-        in_h[i] = serialGetchar(fd);
+        in_hum[i] = serialGetchar(fd);
       }
       for (int i = 0; i<4; i++){
         in_heiz[i] = serialGetchar(fd);
@@ -47,8 +47,8 @@ int main ()
       for (int i = 0; i<4; i++){
         in_luft[i] = serialGetchar(fd);
       }
-      t = atof (in_t);
-      h = atof (in_h);
+      t = atof (in_temp);
+      h = atof (in_hum);
       heiz = atof (in_heiz);
       luft = atof (in_luft);
       printf("Temperatur:%.2f Grad Celsius \n", t);
