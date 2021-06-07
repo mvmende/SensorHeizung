@@ -34,27 +34,28 @@ int main ()
     //}
   
   for (;;)
-  { if (serialGetchar(fd) == 't'){
+  { 
+    if (serialGetchar(fd) == 't'){
       for (int i = 0; i<4; i++){
         if (serialGetchar(fd) == '\r')
           break;
         in_temp[i] = serialGetchar(fd);
       }
-     if (serialGetchar(fd) == '\n'){
+     if (serialGetchar(fd) == 'h'){
       for (int i = 0; i<4; i++){
         if (serialGetchar(fd) == '\r')
           break;
         in_hum[i] = serialGetchar(fd);
       }
      }
-     if (serialGetchar(fd) == '\n'){
+     if (serialGetchar(fd) == 'a'){
       for (int i = 0; i<4; i++){
         if (serialGetchar(fd) == '\r')
           break;
         in_heiz[i] = serialGetchar(fd);
       }
      }
-     if (serialGetchar(fd) == '\n'){
+     if (serialGetchar(fd) == 'b'){
       for (int i = 0; i<4; i++){
         if (serialGetchar(fd) == '\r')
           break;
