@@ -73,6 +73,7 @@ int main ()
       printf("Lüfterleistung: %.2f %% \n", luft);
       
       fflush (stdout) ;
+      delay(10000);
    }
 
 
