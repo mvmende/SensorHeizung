@@ -39,22 +39,16 @@ int main ()
       for (int i = 0; i<4; i++){
         in_temp[i] = serialGetchar(fd);
       }
-    }
-     else if (serialGetchar(fd) == 'h'){
       for (int i = 0; i<4; i++){
         in_hum[i] = serialGetchar(fd);
       }
-     }
-     else if (serialGetchar(fd) == 'a'){
-      for (int i = 0; i<4; i++){
+      for (int i = 0; i<3; i++){
         in_heiz[i] = serialGetchar(fd);
       }
-     }
-     else if (serialGetchar(fd) == 'b'){
-      for (int i = 0; i<4; i++){
+      for (int i = 0; i<3; i++){
         in_luft[i] = serialGetchar(fd);
       }
-     }
+    
       t = atof (in_temp);
       h = atof (in_hum);
       heiz = atof (in_heiz);
@@ -67,7 +61,7 @@ int main ()
       fflush (stdout) ;
       delay(10000);
     }
-
+  }
 
 
 
