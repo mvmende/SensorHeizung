@@ -36,30 +36,31 @@ int main ()
   for (;;)
   { 
     if (serialGetchar(fd) == 't'){
-      for (int i = 0; i<4; i++){
-        if (serialGetchar(fd) == '\r')
-          break;
+      int i = 0;
+      while (serialGetchar(fd) != '\r'){
         in_temp[i] = serialGetchar(fd);
+        i = i+1;
       }
+    }
      if (serialGetchar(fd) == 'h'){
-      for (int i = 0; i<4; i++){
-        if (serialGetchar(fd) == '\r')
-          break;
+       int i = 0;
+       while (serialGetchar(fd) != '\r'){
         in_hum[i] = serialGetchar(fd);
+        i = i+1;
       }
      }
      if (serialGetchar(fd) == 'a'){
-      for (int i = 0; i<4; i++){
-        if (serialGetchar(fd) == '\r')
-          break;
+       int i = 0;
+       while (serialGetchar(fd) != '\r'){
         in_heiz[i] = serialGetchar(fd);
+        i = i+1;
       }
      }
      if (serialGetchar(fd) == 'b'){
-      for (int i = 0; i<4; i++){
-        if (serialGetchar(fd) == '\r')
-          break;
+       int i = 0;
+       while (serialGetchar(fd) != '\r'){
         in_luft[i] = serialGetchar(fd);
+        i = i+1;
       }
      }
       t = atof (in_temp);
@@ -72,31 +73,9 @@ int main ()
       printf("Lüfterleistung: %.2f %% \n", luft);
       
       fflush (stdout) ;
-    }
-   //  else{
-   //    if (serialGetchar(fd) == 'h'){
-   //     for (int j = 0; j<4; j++){
-    //      input[j] = serialGetchar(fd);
-  //      }
-   //     h = atof (input);
-   //     printf("Luftfeuchtigkeit:%.2f \n", h);
-   //     fflush (stdout) ;
-       //}
-    // }
+   }
 
-  }
+
+
  
-  //for (;;)
-  //{ if (serialGetchar(fd) == 10){
-    //  int i=0;
-     // while(serialGetchar(fd)!=13){
-      //  input[i] = serialGetchar(fd);
-       // i++;
-     // }
-     // t = atof (input);
-     // printf("Temperatur:%.2f \n", t);
-    //}
-    //putchar (serialGetchar (fd)) ;
-    //fflush (stdout) ;
-  //}
 }
