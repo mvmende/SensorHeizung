@@ -38,6 +38,12 @@ int main ()
   char input[10];
   char inputh[10];
   int fd ;
+  int sockfd;
+  int loop;
+  int ret;
+  char header[BUFSIZE];
+  char body[BUFSIZE];
+  char result[BUFSIZE];
   
  
   if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
@@ -63,18 +69,12 @@ int main ()
         inputh[j] = serialGetchar(fd);
       }
       t = atof (input);
-      
-        int sockfd;
-        int loop;
-        int ret;
-        char header[BUFSIZE];
-        char body[BUFSIZE];
-        char result[BUFSIZE];
+      h = atof (inputh);
 
-        static struct sockaddr_in serv_addr; /* static is zero filled on start up */
+      static struct sockaddr_in serv_addr; /* static is zero filled on start up */
 
-        printf("Connecting socket to %s and port %d\n", IP_ADDRESS, PORT);
-        if((sockfd = socket(AF_INET, SOCK_STREAM,0)) <0) 
+      printf("Connecting socket to %s and port %d\n", IP_ADDRESS, PORT);
+      if((sockfd = socket(AF_INET, SOCK_STREAM,0)) <0) 
             pexit("socket() failed");
 
         serv_addr.sin_family = AF_INET;
@@ -116,12 +116,44 @@ int main ()
         result[ret] = 0; /* terminate string */
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
 
+        /* InfluxDB line protocol note: 
+            measurement name is "noise"
+            tag is host=blue - multiple tags separate with comma
+            data is random=<number>
+            ending epoch time missing (3 spaces) so InfluxDB generates the timestamp */
+        /* InfluxDB line protocol note: ending epoch time missing so InfluxDB greates it */
+        sprintf(body, "luftfeuchtigkeit,host=%s luftfeuchtigkeit=%.2f   \n", HOSTNAME, h);
+
+        /* Note spaces are important and the carriage-returns & newlines */
+        /* db= is the datbase name, u= the username and p= the password */
+        sprintf(header, 
+            "POST /write?db=%s&u=%s&p=%s HTTP/1.1\r\nHost: influx:8086\r\nContent-Length: %ld\r\n\r\n", 
+             DATABASE, USERNAME, PASSWORD, strlen(body));
+
+        printf("Send to InfluxDB the POST request bytes=%d \n->|%s|<-\n",strlen(header), header);
+        write(sockfd, header, strlen(header));
+        if (ret < 0)
+            pexit("Write Header request to InfluxDB failed");
+
+        printf("Send to InfluxDB the data bytes=%d \n->|%s|<-\n",strlen(body), body);
+        ret = write(sockfd, body, strlen(body));
+        if (ret < 0)
+            pexit("Write Data Body to InfluxDB failed");
+
+        /* Get back the acknwledgement from InfluxDB */
+        /* It worked if you get "HTTP/1.1 204 No Content" and some other fluff */
+        ret = read(sockfd, result, sizeof(result));
+        if (ret < 0)
+            pexit("Reading the result from InfluxDB failed");
+        result[ret] = 0; /* terminate string */
+        printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
+      
+      
         printf(" - - - sleeping for %d secs\n",SECONDS);
         sleep(SECONDS);
   
     close(sockfd);
 
-      h = atof (inputh);
       printf("Temperatur:%.2f Grad Celsius \n", t);
       printf("Luftfeuchtigkeit:%.2f %% \n", h);
       
