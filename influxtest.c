@@ -63,7 +63,7 @@ int main ()
         inputh[j] = serialGetchar(fd);
       }
       t = atof (input);
-      void writetoinflux(){
+      int writetoinflux(){
         int i;
         int sockfd;
         int loop;
