@@ -40,17 +40,17 @@ int main ()
         in_temp[i] = serialGetchar(fd);
       }
 
-     if (serialGetchar(fd) == 'h'){
+     else if (serialGetchar(fd) == 'h'){
       for (int i = 0; i<4; i++){
         in_hum[i] = serialGetchar(fd);
       }
      }
-     if (serialGetchar(fd) == 'a'){
+     else if (serialGetchar(fd) == 'a'){
       for (int i = 0; i<4; i++){
         in_heiz[i] = serialGetchar(fd);
       }
      }
-     if (serialGetchar(fd) == 'b'){
+     else if (serialGetchar(fd) == 'b'){
       for (int i = 0; i<4; i++){
         in_luft[i] = serialGetchar(fd);
       }
