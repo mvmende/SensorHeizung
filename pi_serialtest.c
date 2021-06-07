@@ -39,7 +39,7 @@ int main ()
       for (int i = 0; i<4; i++){
         in_temp[i] = serialGetchar(fd);
       }
-
+    }
      else if (serialGetchar(fd) == 'h'){
       for (int i = 0; i<4; i++){
         in_hum[i] = serialGetchar(fd);
@@ -67,7 +67,7 @@ int main ()
       fflush (stdout) ;
       delay(10000);
     }
-   }
+
 
 
 
