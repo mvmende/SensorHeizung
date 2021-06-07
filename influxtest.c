@@ -21,8 +21,8 @@
 
 /* client endpoint details for a tag: replace with your hostname or use gethostname() */
 #define HOSTNAME "NanoPi-NEO2-Black"
-#define SECONDS 15
-#define LOOPS   100
+#define SECONDS 120
+//#define LOOPS   100
 #define BUFSIZE 8196
 
 pexit(char * msg)
@@ -56,13 +56,6 @@ int main ()
     return 1 ;
   }
 
-// Loop, getting and printing characters
-
-//  while (serialDataAvail (fd))
-  //  {delay(2000);
-    //  printf ("%3d", serialGetchar (fd)) ;
-      //fflush (stdout) ;
-    //}
   
   for (;;)
   { if (serialGetchar(fd) == 't'){
