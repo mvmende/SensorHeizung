@@ -63,8 +63,7 @@ int main ()
         inputh[j] = serialGetchar(fd);
       }
       t = atof (input);
-      int writetoinflux(){
-        int i;
+      
         int sockfd;
         int loop;
         int ret;
@@ -84,7 +83,7 @@ int main ()
         if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) <0) 
             pexit("connect() failed");
 
-        for(loop=0;i<LOOPS; i++) {    
+           
         /* InfluxDB line protocol note: 
             measurement name is "noise"
             tag is host=blue - multiple tags separate with comma
@@ -119,9 +118,9 @@ int main ()
 
         printf(" - - - sleeping for %d secs\n",SECONDS);
         sleep(SECONDS);
-    }
+  
     close(sockfd);
-}
+
       h = atof (inputh);
       printf("Temperatur:%.2f Grad Celsius \n", t);
       printf("Luftfeuchtigkeit:%.2f %% \n", h);
