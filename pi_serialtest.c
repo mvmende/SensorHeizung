@@ -52,12 +52,12 @@ int main ()
       }
       t = atof (in_temp);
       h = atof (in_hum);
-      heiz = atof (in_heiz);
-      luft = atof (in_luft);
+      heiz = atof (in_heiz)*100;
+      luft = atof (in_luft)*100;
       printf("Temperatur:%.2f Grad Celsius \n", t);
       printf("Luftfeuchtigkeit:%.2f %% \n", h);
-      printf("Heizleistung: %.2f %% \n", heiz*100);
-      printf("Lüfterleistung: %.2f %% \n", luft*100);
+      printf("Heizleistung: %.2f %% \n", heiz);
+      printf("Lüfterleistung: %.2f %% \n", luft);
       
       fflush (stdout) ;
       delay(10000);
