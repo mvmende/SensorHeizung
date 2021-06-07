@@ -36,31 +36,23 @@ int main ()
   for (;;)
   { 
     if (serialGetchar(fd) == 't'){
-      int i = 0;
-      while (serialGetchar(fd) != '\r'){
+      for (int i = 0; i<4; i++){
         in_temp[i] = serialGetchar(fd);
-        i = i+1;
       }
     }
      if (serialGetchar(fd) == 'h'){
-       int i = 0;
-       while (serialGetchar(fd) != '\r'){
+      for (int i = 0; i<4; i++){
         in_hum[i] = serialGetchar(fd);
-        i = i+1;
       }
      }
      if (serialGetchar(fd) == 'a'){
-       int i = 0;
-       while (serialGetchar(fd) != '\r'){
+      for (int i = 0; i<4; i++){
         in_heiz[i] = serialGetchar(fd);
-        i = i+1;
       }
      }
      if (serialGetchar(fd) == 'b'){
-       int i = 0;
-       while (serialGetchar(fd) != '\r'){
+      for (int i = 0; i<4; i++){
         in_luft[i] = serialGetchar(fd);
-        i = i+1;
       }
      }
       t = atof (in_temp);
