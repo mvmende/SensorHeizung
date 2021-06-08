@@ -53,8 +53,8 @@ int main ()
       }
       t = atof (in_temp);
       h = atof (in_hum);
-      heiz = atof (in_heiz)*100;
-      luft = atof (in_luft)*100;
+      heiz = atof (in_heiz);
+      luft = atof (in_luft);
       printf("Temperatur:%.2f Grad Celsius \n", t);
       printf("Luftfeuchtigkeit:%.2f %% \n", h);
       printf("Heizleistung: %.2f %% \n", heiz);
