@@ -42,8 +42,8 @@ int main ()
       for (int i = 0; i<4; i++){
         in_hum[i] = serialGetchar(fd);
       }
-    }
-      if (serialGetchar(fd) == 'a'){
+    //}
+      //if (serialGetchar(fd) == 'a'){
       for (int i = 0; i<3; i++){
         in_heiz[i] = serialGetchar(fd);
       }
