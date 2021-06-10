@@ -30,10 +30,11 @@ int main ()
   {
     if (serialGetchar(fd) == 't')
     {
-      for (int i = 0; i<20; i++)
+      int i = 0;
+      while (serialGetchar(fd) != '\r')
       {
-        if(serialGetchar(fd) == '\r') break;
         buffer[i] = serialGetchar(fd);
+        i = i+1;
       }
     }
     printf(buffer);
