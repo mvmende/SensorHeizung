@@ -30,11 +30,9 @@ int main ()
   {
     if (serialGetchar(fd) == 't')
     {
-      int i = 0;
-      while (serialGetchar(fd) != '\r')
+      for (int i=0; i<14; i++)
       {
         buff[i] = serialGetchar(fd);
-        i = i+1;
       }
     }
 
