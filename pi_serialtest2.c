@@ -47,32 +47,32 @@ int main ()
      }
     }
     
-    if (buff[j] == 'h')
-    {
+    //if (buff[j] == 'h')
+    //{
      for (int i = 0; i<4; i++)
      {
        in_hum[i] = buff[j];
        j = j+1;
      }
-    }
+    //}
     
-    if (buff[j] == 'a')
-    {
+    //if (buff[j] == 'a')
+    //{
      for (int i = 0; i<3; i++)
      {
        in_heiz[i] = buff[j];
        j = j+1;
      }
-    }
+    //}
     
-    if (buff[j] == 'b')
-    {
+    //if (buff[j] == 'b')
+    //{
      for (int i = 0; i<3; i++)
      {
        in_luft[i] = buff[j];
        j = j+1;
      }
-    }
+    //}
     
     t = atof (in_temp);
     h = atof (in_hum);
