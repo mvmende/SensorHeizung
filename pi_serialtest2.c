@@ -17,7 +17,7 @@ int main ()
   char in_heiz[10];
   char in_luft[10];
   int fd ;
-  char buff[50];
+  char buff[20];
   
  
   if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
@@ -30,7 +30,7 @@ int main ()
   {
     if (serialGetchar(fd) == 't')
     {
-      for (int i=0; i<14; i++)
+      for (int i=0; i<18; i++)
       {
         buff[i] = serialGetchar(fd);
       }
