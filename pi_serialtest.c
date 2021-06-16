@@ -36,19 +36,19 @@ int main ()
   for (;;)
   { 
     if (serialGetchar(fd) == 't'){
-      for (int i = 0; i<4; i++){
+      for (int i = 0; i<5; i++){
         in_temp[i] = serialGetchar(fd);
       }
-      for (int i = 0; i<4; i++){
+      for (int i = 0; i<5; i++){
         in_hum[i] = serialGetchar(fd);
       }
     }
     //delay(20);
-      if (serialGetchar(fd) == 'a'){
-      for (int i = 0; i<3; i++){
+      //if (serialGetchar(fd) == 'a'){
+      for (int i = 0; i<4; i++){
         in_heiz[i] = serialGetchar(fd);
       }
-      for (int i = 0; i<3; i++){
+      for (int i = 0; i<4; i++){
         in_luft[i] = serialGetchar(fd);
       }
       }
@@ -61,7 +61,7 @@ int main ()
       printf("Heizleistung: %.2f %% \n", heiz);
       printf("Lüfterleistung: %.2f %% \n", luft);
       
-      fflush (stdout) ;
+      //fflush (stdout) ;
       delay(10000);
     }
   }
