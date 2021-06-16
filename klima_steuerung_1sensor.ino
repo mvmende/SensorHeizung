@@ -97,8 +97,10 @@ void loop() {
     analogWrite(PWMluft, yy2);                 //PWM Signal erzeugen
   }
 
-  float pro_heiz = y/255;
-  float pro_luft = y2/255;
+  float duty_heiz = yy;
+  float pro_heiz = duty_heiz/255;
+  float duty_luft = yy2;
+  float pro_luft = duty_luft/255;
 
   Serial.print("t");     
   Serial.print(temp);
