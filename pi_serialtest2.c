@@ -17,7 +17,7 @@ int main ()
   char in_heiz[10];
   char in_luft[10];
   int fd ;
-  char buff[20];
+  char buff[25];
   
  
   if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
