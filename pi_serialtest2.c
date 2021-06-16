@@ -37,52 +37,9 @@ int main ()
         i = i+1;
       }
     }
-    int j = 0;
-    if (buff[j] == 't')
-    {
-     for (int i = 0; i<4; i++)
-     {
-       in_temp[i] = buff[j];
-       j = j+1;
-     }
-    }
+
     
-    //if (buff[j] == 'h')
-    //{
-     for (int i = 0; i<4; i++)
-     {
-       in_hum[i] = buff[j];
-       j = j+1;
-     }
-    //}
-    
-    //if (buff[j] == 'a')
-    //{
-     for (int i = 0; i<3; i++)
-     {
-       in_heiz[i] = buff[j];
-       j = j+1;
-     }
-    //}
-    
-    //if (buff[j] == 'b')
-    //{
-     for (int i = 0; i<3; i++)
-     {
-       in_luft[i] = buff[j];
-       j = j+1;
-     }
-    //}
-    
-    t = atof (in_temp);
-    h = atof (in_hum);
-    heiz = atof (in_heiz);
-    luft = atof (in_luft);
-    printf("Temperatur:%.2f Grad Celsius \n", t);
-    printf("Luftfeuchtigkeit:%.2f %% \n", h);
-    printf("Heizleistung: %.2f %% \n", heiz);
-    printf("Lüfterleistung: %.2f %% \n", luft);
-      
+    printf(buff);
     
   }
 }
