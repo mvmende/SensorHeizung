@@ -51,7 +51,7 @@ int main ()
       for (int i = 0; i<4; i++){
         in_luft[i] = serialGetchar(fd);
       }
-      }
+      //}
       t = atof (in_temp);
       h = atof (in_hum);
       heiz = atof (in_heiz);
@@ -63,7 +63,7 @@ int main ()
       
       //fflush (stdout) ;
       delay(10000);
-    }
+    //}
   }
 
 
