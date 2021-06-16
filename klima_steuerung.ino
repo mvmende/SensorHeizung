@@ -74,7 +74,7 @@ void loop() {
   else{
     e = w - temp;                            //Regelabweichung bestimmen
     esum = esum + e;                        
-    if (esum < -2000) esum = -2000;          //kumulierten Fehler begrenzen um Überlauf von "int yy" zu verhindern
+    if (esum < 0) esum = 0;          //kumulierten Fehler begrenzen um Überlauf von "int yy" zu verhindern
     if (esum > 2000) esum = 2000;
     y = Kp*e + Ki*Ta*esum;                   //Reglergleichung
     yy = y; 
@@ -85,7 +85,7 @@ void loop() {
 
     e2 = temp - w2;                           //Regelabweichung bestimmen
     esum2 = esum2 + e2;                        
-    if (esum2 < -2000) esum2 = -2000;         //kumulierten Fehler begrenzen um Überlauf von "int yy" zu verhindern
+    if (esum2 < 0) esum2 = 0;         //kumulierten Fehler begrenzen um Überlauf von "int yy" zu verhindern
     if (esum2 > 2000) esum2 = 2000;
     y2 = Kp*e2 + Ki*Ta*esum2;                 //Reglergleichung
     yy2 = y2; 
@@ -95,18 +95,13 @@ void loop() {
     analogWrite(PWMluft, yy2);                 //PWM Signal erzeugen
   }
    
-  float duty_heiz = yy;
-  float pro_heiz = duty_heiz/255;
-  float duty_luft = yy2;
-  float pro_luft = duty_luft/255;
+  float pro_heiz = y/255;
+  float pro_luft = y2/255;
 
   Serial.print("t");     
   Serial.print(temp);
-  //Serial.print("h");
-  Serial.println(hum);
-  Serial.print("a");
+  Serial.print(hum);
   Serial.print(pro_heiz,2);
-  //Serial.print("b");
-  Serial.println(pro_luft,2);
+  Serial.print(pro_luft,2);
   
 }
