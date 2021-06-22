@@ -1,0 +1,3 @@
+git pull https://github.com/mvmende/SensorHeizung.git
+gcc −o influxwrite influxwrite.c −lwiringPi
+./influxwrite
