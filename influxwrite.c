@@ -229,7 +229,7 @@ int main ()
    //   printf("Temperatur:%.2f Grad Celsius \n", t);
    //   printf("Luftfeuchtigkeit:%.2f %% \n", h);
       
-      //fflush (stdout) ;
+      fflush (stdout) ;
     
   
 
