@@ -11,9 +11,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-
 /* YOU WILL HAVE TO CHANGE THESE FIVE LINES TO MATCH YOUR INFLUXDB CONFIG */
-#define PORT        8086        /* Port number as an integer - web server default is 80 */
+#define PORT        8086          /* Port number as an integer - web server default is 80 */
 #define IP_ADDRESS "127.0.0.1"    /* IP Address as a string */
 #define DATABASE "SensorKlima"
 #define USERNAME "klima"
@@ -49,14 +48,12 @@ int main ()
   char body[BUFSIZE];
   char result[BUFSIZE];
   
- 
   if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
   {
     fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
     return 1 ;
   }
 
-  
   for (;;)
   { if (serialGetchar(fd) == 't')
     {
@@ -89,7 +86,6 @@ int main ()
         serv_addr.sin_port = htons(PORT);
         if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) <0) 
             pexit("connect() failed");
-
            
         /* InfluxDB line protocol*/
         sprintf(body, "temperatur,host=%s temperatur=%.2f   \n", HOSTNAME, t);
@@ -145,7 +141,6 @@ int main ()
         result[ret] = 0; /* terminate string */
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
       
-   
         /* InfluxDB line protocol */
         sprintf(body, "heizleistung,host=%s heizleistung=%.2f   \n", HOSTNAME, heiz);
 
@@ -200,7 +195,6 @@ int main ()
         result[ret] = 0; /* terminate string */
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
       
-      
         printf(" - - - sleeping for %d secs\n",SECONDS);
         sleep(SECONDS);
   
@@ -208,12 +202,6 @@ int main ()
 
    //   printf("Temperatur:%.2f Grad Celsius \n", t);
    //   printf("Luftfeuchtigkeit:%.2f %% \n", h);
-      
       fflush (stdout) ;
-    
-  
-
   }
- 
-
 }
