@@ -91,12 +91,7 @@ int main ()
             pexit("connect() failed");
 
            
-        /* InfluxDB line protocol note: 
-            measurement name is "noise"
-            tag is host=blue - multiple tags separate with comma
-            data is random=<number>
-            ending epoch time missing (3 spaces) so InfluxDB generates the timestamp */
-        /* InfluxDB line protocol note: ending epoch time missing so InfluxDB greates it */
+        /* InfluxDB line protocol*/
         sprintf(body, "temperatur,host=%s temperatur=%.2f   \n", HOSTNAME, t);
 
         /* Note spaces are important and the carriage-returns & newlines */
@@ -123,12 +118,7 @@ int main ()
         result[ret] = 0; /* terminate string */
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
 
-        /* InfluxDB line protocol note: 
-            measurement name is "noise"
-            tag is host=blue - multiple tags separate with comma
-            data is random=<number>
-            ending epoch time missing (3 spaces) so InfluxDB generates the timestamp */
-        /* InfluxDB line protocol note: ending epoch time missing so InfluxDB greates it */
+        /* InfluxDB line protocol */
         sprintf(body, "luftfeuchtigkeit,host=%s luftfeuchtigkeit=%.2f   \n", HOSTNAME, h);
 
         /* Note spaces are important and the carriage-returns & newlines */
@@ -156,12 +146,7 @@ int main ()
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
       
    
-   /* InfluxDB line protocol note: 
-            measurement name is "noise"
-            tag is host=blue - multiple tags separate with comma
-            data is random=<number>
-            ending epoch time missing (3 spaces) so InfluxDB generates the timestamp */
-        /* InfluxDB line protocol note: ending epoch time missing so InfluxDB greates it */
+        /* InfluxDB line protocol */
         sprintf(body, "heizleistung,host=%s heizleistung=%.2f   \n", HOSTNAME, heiz);
 
         /* Note spaces are important and the carriage-returns & newlines */
@@ -188,12 +173,7 @@ int main ()
         result[ret] = 0; /* terminate string */
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
 
-        /* InfluxDB line protocol note: 
-            measurement name is "noise"
-            tag is host=blue - multiple tags separate with comma
-            data is random=<number>
-            ending epoch time missing (3 spaces) so InfluxDB generates the timestamp */
-        /* InfluxDB line protocol note: ending epoch time missing so InfluxDB greates it */
+        /* InfluxDB line protocol */
         sprintf(body, "lüfterleistung,host=%s lüfterleistung=%.2f   \n", HOSTNAME, luft);
 
         /* Note spaces are important and the carriage-returns & newlines */
