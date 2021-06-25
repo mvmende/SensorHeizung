@@ -199,7 +199,11 @@ int main ()
         sleep(SECONDS);
   
     close(sockfd);
-
+   
+    memset(in_temp, 0, 10);
+    memset(in_hum, 0, 10);
+    memset(in_heiz, 0, 10);
+    memset(in_luft, 0, 10);
    //   printf("Temperatur:%.2f Grad Celsius \n", t);
    //   printf("Luftfeuchtigkeit:%.2f %% \n", h);
       fflush (stdout) ;
