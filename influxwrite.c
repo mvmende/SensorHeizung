@@ -32,11 +32,11 @@ pexit(char * msg)
 
 int main ()
 { 
-  float t;
+  float t;      //Variablen initialisieren zur spaeteren Speicherung der Parameter
   float h;
   float heiz;
   float luft;
-  char in_temp[10];
+  char in_temp[10];     //Input Arrays initialisieren
   char in_hum[10];
   char in_heiz[10];
   char in_luft[10];
@@ -48,29 +48,29 @@ int main ()
   char body[BUFSIZE];
   char result[BUFSIZE];
   
-  if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)
+  if ((fd = serialOpen ("/dev/ttyACM0", 9600)) < 0)     //serielles Geraet mit Adresse "/dev/ttyACM0" oeffnen
   {
-    fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
+    fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ; //Fehler ausgeben falls Oeffnen nicht moeglich
     return 1 ;
   }
 
   for (;;)
-  { if (serialGetchar(fd) == 't')
+  { if (serialGetchar(fd) == 't')       //Anfangszeichnen "t" suchen
     {
-      for (int i = 0; i<5; i++){
-        in_temp[i] = serialGetchar(fd);
+      for (int i = 0; i<5; i++){        //5 Zeichen nacheinander aus dem Input Stream
+        in_temp[i] = serialGetchar(fd); //in das Array in_temp schreiben
       }
-      for (int i = 0; i<5; i++){
-        in_hum[i] = serialGetchar(fd);
+      for (int i = 0; i<5; i++){        //5 Zeichen aus Input Stream
+        in_hum[i] = serialGetchar(fd);  //in in_hum schreiben
       }
-      for (int i = 0; i<4; i++){
-        in_heiz[i] = serialGetchar(fd);
+      for (int i = 0; i<4; i++){        //4 Zeichen aus Input Stream
+        in_heiz[i] = serialGetchar(fd); //in in_heiz schreiben
       }
-      for (int i = 0; i<4; i++){
-        in_luft[i] = serialGetchar(fd);
+      for (int i = 0; i<4; i++){        //4 Zeichen aus Input Stream
+        in_luft[i] = serialGetchar(fd); //in in_luft schreiben
       }
     }
-      t = atof (in_temp);
+      t = atof (in_temp);               //Input Arrays in float Variablen umwandeln
       h = atof (in_hum);
       heiz = atof (in_heiz)*100;
       luft = atof (in_luft)*100;
