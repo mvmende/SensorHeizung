@@ -4,7 +4,7 @@
 #define DHTPIN3 23
 #define PWMluft 0               //PWM Pins definieren
 #define PWMheiz 1
-#define DHTTYPE DHT22           //DHT22 Sensor
+#define DHTTYPE DHT22           //Sensortyp (DHT22)
 
 DHT dht1(DHTPIN1, DHTTYPE);     //Sensorsetup
 DHT dht2(DHTPIN2, DHTTYPE);
@@ -15,13 +15,13 @@ float Ki = 1.0;                 //Reglerverstaerkung Integralanteil
 float Ta = 2.0;                 //Abtastrate der Sensoren in Sekunden
 float w = 22.0;                 //Solltemperatur Heizung
 float w2 = 30.0;                //Solltemperatur Luefter
-float e;                        
-float esum;
-float e2;
-float esum2;
-float y;
+float e;                        //aktueller Fehler Heizung
+float esum;                     //kumulierter Fehler Heizung
+float e2;                       //aktueller Fehler Lueftung
+float esum2;                    //kumulierter Fehler Lueftung
+float y;                        //Ergebnis Reglergleichung Heizung
 int yy;
-float y2;
+float y2;                       //Ergebnis Reglergleichung Lueftung
 int yy2;
 float hum_krit = 50;            //kritische Luftfeuchtigkeit
 float temp_krit = 50;           //kritische Temperatur
@@ -80,9 +80,9 @@ void loop() {
     analogWrite(PWMluft, yy2);            //PWM Signal erzeugen
   }
   float duty_heiz = yy;
-  float pro_heiz = duty_heiz/255;
+  float pro_heiz = duty_heiz/255;         //Heizleistung als Wert zwischen 0 und 1
   float duty_luft = yy2;
-  float pro_luft = duty_luft/255;
+  float pro_luft = duty_luft/255;         //Luefterleistung als Wert zwischen 0 und 1
   
   Serial.print("t");                       //Zeichen zur Identifikation des Anfangs eines Datenpakets
   Serial.print(temp);                      //Temperatur und
