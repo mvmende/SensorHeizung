@@ -4,7 +4,7 @@
 #define DHTPIN3 23
 #define PWMluft 0               //PWM Pins definieren
 #define PWMheiz 1
-#define DHTTYPE DHT22           //DHT22 Sensor
+#define DHTTYPE DHT22           //Sensortyp (DHT22)
 
 DHT dht1(DHTPIN1, DHTTYPE);     //Sensorsetup
 //DHT dht2(DHTPIN2, DHTTYPE);
@@ -15,13 +15,13 @@ float Ki = 1.0;                 //Reglerverstaerkung Integralanteil
 float Ta = 2.0;                 //Abtastrate der Sensoren in Sekunden
 float w = 22.0;                 //Solltemperatur Heizung
 float w2 = 30.0;                //Solltemperatur Luefter
-float e;
-float esum;
-float e2;
-float esum2;
-float y;
+float e;                        //aktueller Fehler Heizung
+float esum;                     //kumulierter Fehler Heizung
+float e2;                       //aktueller Fehler Lueftung
+float esum2;                    //kumulierter Fehler Lueftung
+float y;                        //Ergebnis Reglergleichung Heizung
 int yy;
-float y2;
+float y2;                       //Ergebnis Reglergleichung Lueftung
 int yy2;
 float hum;
 float temp;
@@ -52,43 +52,43 @@ void loop() {
   float hum = f1;            
   float temp = t1;
 
-  if ((hum > hum_krit) && (temp < temp_krit)) {
+  if ((hum > hum_krit) && (temp < temp_krit)) {     //Heizung & Lüftung an, wenn kritische Luftfeuchtigkeit überschritten und kritische Temperatur noch nicht erreicht
     analogWrite(PWMheiz, 255);
     analogWrite(PWMluft, 255);
   }
-  else if (t1 > temp_krit) {
+  else if (t1 > temp_krit) {               //Lüftung an, wenn kritische Temperatur überschritten
     analogWrite(PWMheiz, 0);
     analogWrite(PWMluft, 255);
   }
   else{
     e = w - temp;                        //Regelabweichung bestimmen
-    esum = esum + e;                        
+    esum = esum + e;                     //kumulierten Fehler berechnen
     if (esum < 0) esum = 0;              //kumulierten Fehler begrenzen
     if (esum > 2000) esum = 2000;
     y = Kp*e + Ki*Ta*esum;               //Reglergleichung
-    yy = y; 
-    if (y < 0) yy = 0;
+    yy = y;                              //Ergebnis der Reglergleichung in int umwandeln
+    if (y < 0) yy = 0;                   //Ergebnis der Reglergleichung auf Wertebereich der analogWrite Funktion begrenzen
     if (y > 255) yy = 255;
-    analogWrite(PWMheiz, yy);
+    analogWrite(PWMheiz, yy);            //PWM Signal erzeugen
 
     e2 = temp - w2;                      //Regelabweichung bestimmen
-    esum2 = esum2 + e2;                        
+    esum2 = esum2 + e2;                  //kumulierten Fehler berechnen
     if (esum2 < 0) esum2 = 0;            //kumulierten Fehler begrenzen
     if (esum2 > 2000) esum2 = 2000;
     y2 = Kp*e2 + Ki*Ta*esum2;            //Reglergleichung
-    yy2 = y2; 
-    if (y2 < 0) yy2 = 0;                       
+    yy2 = y2;                            //Ergebnis der Reglergleichung in int umwandeln
+    if (y2 < 0) yy2 = 0;                 //Ergebnis der Reglergleichung auf Wertebereich der analogWrite Funktion begrenzen
     if (y2 > 255) yy2 = 255;
     analogWrite(PWMluft, yy2);           //PWM Signal erzeugen
   }
   float duty_heiz = yy;
-  float pro_heiz = duty_heiz/255;
+  float pro_heiz = duty_heiz/255;        //Heizleistung als Wert zwischen 0 und 1
   float duty_luft = yy2;
-  float pro_luft = duty_luft/255;
+  float pro_luft = duty_luft/255;        //Luefterleistung als Wert zwischen 0 und 1
 
-  Serial.print("t");     
-  Serial.print(temp);
-  Serial.print(hum);
-  Serial.print(pro_heiz,2);
-  Serial.print(pro_luft,2);
+  Serial.print("t");                     //Zeichen zur Identifikation des Anfangs eines Datenpakets
+  Serial.print(temp);                    //Temperatur und
+  Serial.print(hum);                     //Luftfeuchtigkeit auf seriellen Port schreiben
+  Serial.print(pro_heiz,2);              //Heiz- und
+  Serial.println(pro_luft,2);            //Luefterleistung (0 bis 1) mit 2 Nachkommastellen
 }
