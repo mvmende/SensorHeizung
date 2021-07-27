@@ -52,11 +52,11 @@ void loop() {
   float hum = f1;            
   float temp = t1;
 
-  if ((hum > hum_krit) && (temp < temp_krit)) {     //Heizung & Lüftung an, wenn kritische Luftfeuchtigkeit überschritten und kritische Temperatur noch nicht erreicht
+  if ((hum > hum_krit) && (temp < temp_krit)) {     //Heizung & Lueftung an, wenn kritische Luftfeuchtigkeit ueberschritten und kritische Temperatur noch nicht erreicht
     analogWrite(PWMheiz, 255);
     analogWrite(PWMluft, 255);
   }
-  else if (t1 > temp_krit) {               //Lüftung an, wenn kritische Temperatur überschritten
+  else if (t1 > temp_krit) {               //Lueftung an, wenn kritische Temperatur ueberschritten
     analogWrite(PWMheiz, 0);
     analogWrite(PWMluft, 255);
   }
