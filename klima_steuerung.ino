@@ -84,9 +84,9 @@ void loop() {
   float duty_luft = yy2;
   float pro_luft = duty_luft/255;         //Luefterleistung als Wert zwischen 0 und 1
   
-  Serial.print("t");                       //Zeichen zur Identifikation des Anfangs eines Datenpakets
-  Serial.print(temp);                      //Temperatur und
-  Serial.print(hum);                       //Luftfeuchtigkeit auf seriellen Port schreiben
-  Serial.print(pro_heiz,2);                //Heiz- und
-  Serial.println(pro_luft,2);              //Luefterleistung (0 bis 1) mit 2 Nachkommastellen
+  Serial.print("t");                      //Zeichen zur Identifikation des Anfangs eines Datenpakets
+  Serial.print(temp);                     //Temperatur und
+  Serial.print(hum);                      //Luftfeuchtigkeit auf seriellen Port schreiben
+  Serial.print(pro_heiz,2);               //Heiz- und
+  Serial.println(pro_luft,2);             //Luefterleistung (0 bis 1) mit 2 Nachkommastellen
 }
