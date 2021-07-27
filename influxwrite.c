@@ -88,7 +88,7 @@ int main ()
             pexit("connect() failed");
            
         /* InfluxDB line protocol*/
-        sprintf(body, "temperatur,host=%s temperatur=%.2f   \n", HOSTNAME, t);
+        sprintf(body, "temperatur,host=%s temperatur=%.2f   \n", HOSTNAME, t);          //Temperatur uebertragen
 
         /* Note spaces are important and the carriage-returns & newlines */
         /* db= is the datbase name, u= the username and p= the password */
@@ -115,7 +115,7 @@ int main ()
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
 
         /* InfluxDB line protocol */
-        sprintf(body, "luftfeuchtigkeit,host=%s luftfeuchtigkeit=%.2f   \n", HOSTNAME, h);
+        sprintf(body, "luftfeuchtigkeit,host=%s luftfeuchtigkeit=%.2f   \n", HOSTNAME, h);          //Luftfeuchtigkeit uebertragen
 
         /* Note spaces are important and the carriage-returns & newlines */
         /* db= is the datbase name, u= the username and p= the password */
@@ -142,7 +142,7 @@ int main ()
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
       
         /* InfluxDB line protocol */
-        sprintf(body, "heizleistung,host=%s heizleistung=%.2f   \n", HOSTNAME, heiz);
+        sprintf(body, "heizleistung,host=%s heizleistung=%.2f   \n", HOSTNAME, heiz);           //Heizleistung uebertragen
 
         /* Note spaces are important and the carriage-returns & newlines */
         /* db= is the datbase name, u= the username and p= the password */
@@ -169,7 +169,7 @@ int main ()
         printf("Result returned from InfluxDB. Note:204 is Success\n->|%s|<-\n",result);
 
         /* InfluxDB line protocol */
-        sprintf(body, "lüfterleistung,host=%s lüfterleistung=%.2f   \n", HOSTNAME, luft);
+        sprintf(body, "lüfterleistung,host=%s lüfterleistung=%.2f   \n", HOSTNAME, luft);           //Luefterleistungs uebertragen
 
         /* Note spaces are important and the carriage-returns & newlines */
         /* db= is the datbase name, u= the username and p= the password */
@@ -200,7 +200,7 @@ int main ()
   
     close(sockfd);
    
-    memset(in_temp, 0, 10);
+    memset(in_temp, 0, 10);         //Input Arrays leeren
     memset(in_hum, 0, 10);
     memset(in_heiz, 0, 10);
     memset(in_luft, 0, 10);
