@@ -50,11 +50,11 @@ void loop() {
   float hum = (f1+f2+f3)/3;               //Durchschnitt aller Sensoren
   float temp = (t1+t2+t3)/3;
 
-  if ((hum > hum_krit) && (temp < temp_krit)) {     //Heizung & Lüftung an, wenn kritische Luftfeuchtigkeit überschritten und kritische Temperatur noch nicht erreicht
+  if ((hum > hum_krit) && (temp < temp_krit)) {     //Heizung & Lueftung an, wenn kritische Luftfeuchtigkeit ueberschritten und kritische Temperatur noch nicht erreicht
     analogWrite(PWMheiz, 255);
     analogWrite(PWMluft, 255);
   }
-  else if ((t1 > temp_krit) || (t2 > temp_krit) || (t3 > temp_krit)) {    //Lüftung an, wenn kritische Temperatur an einem der drei Sensoren überschritten
+  else if ((t1 > temp_krit) || (t2 > temp_krit) || (t3 > temp_krit)) {    //Lueftung an, wenn kritische Temperatur an einem der drei Sensoren ueberschritten
     analogWrite(PWMheiz, 0);
     analogWrite(PWMluft, 255);
   }
