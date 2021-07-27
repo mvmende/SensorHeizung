@@ -54,7 +54,7 @@ void loop() {
     analogWrite(PWMheiz, 255);
     analogWrite(PWMluft, 255);
   }
-  else if ((t1 > temp_krit) || (t2 > temp_krit) || (t3 > temp_krit)) {    //
+  else if ((t1 > temp_krit) || (t2 > temp_krit) || (t3 > temp_krit)) {    //Lüftung an, wenn kritische Temperatur an einem der drei Sensoren überschritten
     analogWrite(PWMheiz, 0);
     analogWrite(PWMluft, 255);
   }
